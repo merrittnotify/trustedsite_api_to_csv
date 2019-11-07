@@ -118,6 +118,9 @@ const api = async () => {
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       // GET: RECENT SCAN DATES
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      if (target.lastScan === undefined) {
+        continue;
+      }
       for (let i = 0; i < target.recentScanIds.length; i++) {
         let recent_scan = await api_request(
           `scan-result.json?targetId=${target.targetId}&scanId=${target.recentScanIds[i]}&includeInstanceOutput=1`

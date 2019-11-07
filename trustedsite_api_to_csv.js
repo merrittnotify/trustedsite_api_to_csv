@@ -111,7 +111,7 @@ const api = async () => {
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // GET: TARGETS
   //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  let vuln_cache = {}
+  let vuln_cache = {};
   let targets = await api_request("scan-targets.json");
   if (targets.code == 1) {
     for (let target of targets.targets) {
@@ -138,12 +138,12 @@ const api = async () => {
       // GET: VULN INFO
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       for (let result of results.scan.vulns) {
-        let vuln = ""
+        let vuln = "";
         if (result.vulnId in vuln_cache) {
-          vuln = vuln_cache[result.vulnId]
+          vuln = vuln_cache[result.vulnId];
         } else {
           vuln = await api_request(`scan-vuln.json?vulnId=${result.vulnId}`);
-          vuln_cache[result.vulnId] = vuln
+          vuln_cache[result.vulnId] = vuln;
         }
         //---
         let vuln_num_scans = 1;

@@ -120,6 +120,35 @@ const api = async () => {
       // GET: RECENT SCAN DATES
       //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       if (target.lastScan === undefined) {
+        lines.push({
+          target_id: csv_data_protect(target.targetId),
+          target_hostname: csv_data_protect(target.hostname),
+          target_name: csv_data_protect(target.name),
+          target_tags: csv_data_protect(target.tags),
+          target_created: csv_data_protect(target.dateCreated),
+          target_last_scan: "",
+          target_next_scan: csv_data_protect(target.next_scan_date),
+          target_scan_frequency: scan_frequency_to_text(target.scan_frequency),
+          target_scan_hour: scan_hour_to_text(target.scan_hour),
+          target_network_scan: target_scan_type_to_text(target.scan_network),
+          target_website_scan: target_scan_type_to_text(target.scan_website),
+          target_pci_scan: target_scan_type_to_text(target.scan_pci),
+          vuln_id: "",
+          vuln_name: "",
+          vuln_first_found: "",
+          vuln_protocol: "",
+          vuln_port: "",
+          vuln_pci: "",
+          vuln_num_scans: "",
+          vuln_severity: "",
+          vuln_consequence: "",
+          vuln_solution: "",
+          vuln_description: "",
+          vuln_type: "",
+          vuln_cves: "",
+          vuln_cvss_base_score: "",
+          vuln_result: ""
+        });
         continue;
       }
       for (let i = 0; i < target.recentScanIds.length; i++) {

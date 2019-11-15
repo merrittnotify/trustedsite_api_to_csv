@@ -16,7 +16,7 @@ $ node trustedsite_api_to_csv.js YOUR-API-KEY-HERE
 
 ## Output
 
-This script outputs results from the most recent scan for each target on your account in a comma-separated values file with one vulnerability finding per line. Targets with no scans will have one line in the CSV with target details. The fields provided for each line are:
+This script outputs results from the most recent scan for each target on your account in a comma-separated values file with one vulnerability finding per line. The output file will be placed in the directory the script is run from, and be named "output.csv". Targets with no scans will have one line in the CSV with target details. The fields provided for each line are:
 
 
     target_id

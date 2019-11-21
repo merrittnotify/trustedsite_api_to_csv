@@ -147,7 +147,10 @@ const api = async () => {
           vuln_type: "",
           vuln_cves: "",
           vuln_cvss_base_score: "",
-          vuln_result: ""
+          vuln_result: "",
+          vuln_uri: "",
+          vuln_param: "",
+          vuln_payload: ""
         });
         continue;
       }
@@ -184,6 +187,16 @@ const api = async () => {
             vuln_num_scans++;
           }
         }
+        let uri = param = payload = "";
+        if (result.hasOwnProperty("uri")) {
+          uri = result.uri;
+        };
+        if (result.hasOwnProperty("param")) {
+          param = result.param;
+        };
+        if (result.hasOwnProperty("payload")) {
+          payload = result.payload;
+        };
         //---
         lines.push({
           target_id: csv_data_protect(target.targetId),
@@ -212,7 +225,10 @@ const api = async () => {
           vuln_type: vuln_type_to_text(vuln.vuln.type),
           vuln_cves: csv_data_protect(vuln.vuln.cve_ids),
           vuln_cvss_base_score: csv_data_protect(vuln.vuln.cvss_base_score),
-          vuln_result: csv_data_protect(encoded_to_text(result.result))
+          vuln_result: csv_data_protect(encoded_to_text(result.result)),
+          vuln_uri: csv_data_protect(encoded_to_text(uri)),
+          vuln_param: csv_data_protect(encoded_to_text(param)),
+          vuln_payload: csv_data_protect(encoded_to_text(payload))
         });
       }
     }

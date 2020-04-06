@@ -49,3 +49,4 @@ This script outputs results from the most recent scan for each target on your ac
     vuln_param
     vuln_uri
     vuln_payload
+    vuln_resolved

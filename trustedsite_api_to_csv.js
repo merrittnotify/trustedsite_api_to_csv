@@ -150,7 +150,8 @@ const api = async () => {
           vuln_result: "",
           vuln_uri: "",
           vuln_param: "",
-          vuln_payload: ""
+          vuln_payload: "",
+          vuln_resolved_date: ""
         });
         continue;
       }
@@ -187,7 +188,7 @@ const api = async () => {
             vuln_num_scans++;
           }
         }
-        let uri = param = payload = "";
+        let uri = param = payload = resolved = "";
         if (result.hasOwnProperty("uri")) {
           uri = result.uri;
         };
@@ -197,6 +198,9 @@ const api = async () => {
         if (result.hasOwnProperty("payload")) {
           payload = result.payload;
         };
+        if (result.hasOwnProperty("resolved")) {
+          resolved = result.resolved.date
+        }
         //---
         lines.push({
           target_id: csv_data_protect(target.targetId),
@@ -228,7 +232,8 @@ const api = async () => {
           vuln_result: csv_data_protect(encoded_to_text(result.result)),
           vuln_uri: csv_data_protect(encoded_to_text(uri)),
           vuln_param: csv_data_protect(encoded_to_text(param)),
-          vuln_payload: csv_data_protect(encoded_to_text(payload))
+          vuln_payload: csv_data_protect(encoded_to_text(payload)),
+          vuln_resolved: resolved
         });
       }
     }
